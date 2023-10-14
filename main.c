@@ -12,7 +12,6 @@ int main(int argc, char **argv, char **envp)
 {
 char **args = NULL;
 char *cmdin = NULL;
-char *cmd_path = NULL;
 
 signal(SIGINT, signal_handlers);
 if (argc < 1)
@@ -28,15 +27,7 @@ print_dollarsign();
 cmdin = input_command();
 args = str_tokenizefunc(cmdin, _strlen(cmdin));
 exit_cmd(cmdin, args);
-cmd_path = find_cmdpath(args[0]);
-if (cmd_path == NULL)
-{
-not_found_error(args[0]);
-free(cmdin);
-continue;
-}
-cmd_execution(cmd_path, args, envp);
-free(cmd_path);
+handle_execute_cmd(cmdin, args, envp);
 free_arguments(args);
 free(cmdin);
 }

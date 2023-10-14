@@ -1,5 +1,69 @@
 #include "Shell.h"
 /**
+ * handle_execute_cmd - to handle env & path
+ * @cmdin: command entered
+ * @args: input arguments
+ * @envp: enviromental variables passed
+ */
+void handle_execute_cmd(char *cmdin, char **args, char **envp)
+{
+char *cmd_path = NULL;
+if (strcmp(args[0], "setenv") == 0)
+{
+setenv_func(args);
+}
+else if (strcmp(args[0], "unsetenv") == 0)
+{
+unsetenv_func(args);
+}
+else
+{
+cmd_path = find_cmdpath(args[0]);
+if (cmd_path == NULL)
+{
+not_found_error(args[0]);
+free(cmdin);
+return;
+}
+cmd_execution(cmd_path, args, envp);
+free(cmd_path);
+}
+}
+/**
+ * setenv_func - to handle set eviroment vars
+ * @args: input arguments
+ */
+void setenv_func(char **args)
+{
+if (args[1] == NULL || args[2] == NULL)
+{
+char *enverr = "setenv: missing arguments\n";
+write(STDERR_FILENO, enverr, strlen(enverr));
+return;
+}
+if (setenv(args[1], args[2], 1) != 0)
+{
+perror("setenv");
+}
+}
+/**
+ * unsetenv_func - to handle unset eviroment vars
+ * @args: input arguments
+ */
+void unsetenv_func(char **args)
+{
+if (args[1] == NULL)
+{
+char *enverr = "unsetenv: missing arguments\n";
+write(STDERR_FILENO, enverr, strlen(enverr));
+return;
+}
+if (unsetenv(args[1]) != 0)
+{
+perror("unsetenv");
+}
+}
+/**
  * find_cmdpath - find command path
  * @cmdin: command entered
  *
@@ -44,14 +108,5 @@ return (NULL);
 }
 return (NULL);
 }
-/**
-* free_locatn - func to free path.
-* @locatn: path locatn.
-*/
-void free_locatn(char *locatn)
-{
-if (locatn != NULL)
-{
-free(locatn);
-}
-}
+
+
