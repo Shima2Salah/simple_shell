@@ -33,6 +33,8 @@ size_t inc_lineptr(char **lineptr, size_t *n, size_t line_len,
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_strtok(char *str, char *delim);
 int _atoi(char *s);
+void free_arguments(char **args);
+void free_locatn(char *locatn);
 #endif
 
 

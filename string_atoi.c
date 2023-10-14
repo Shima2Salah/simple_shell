@@ -1,5 +1,18 @@
 #include "Shell.h"
 /**
+* free_arguments - func to free all args.
+* @args: token arguments.
+*/
+void free_arguments(char **args)
+{
+int i;
+for (i = 0; args[i] != NULL; i++)
+{
+free(args[i]);
+}
+free(args);
+}
+/**
 * _atoi - Converts a string to an integer.
 * @s: string to be converted.
 * Return: integer value.

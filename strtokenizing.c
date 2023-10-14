@@ -79,7 +79,6 @@ for (k = 0; k < j; k++)
 free(args[k]);
 }
 free(args);
-free(str_cpy);
 return (NULL);
 }
 strcpy(args[j], str_token);

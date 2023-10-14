@@ -63,7 +63,8 @@ break;
 }
 }
 line_len = inc_lineptr(lineptr, n, line_len, buff, inc_buf, i + 1);
-(*lineptr)[line_len] = '\0';
+if (line_len != 0)
+(*lineptr)[line_len - 1] = '\0';
 inc_buf = i + 1;
 if (buff[i] == '\n')
 {

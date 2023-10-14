@@ -44,4 +44,14 @@ return (NULL);
 }
 return (NULL);
 }
-
+/**
+* free_locatn - func to free path.
+* @locatn: path locatn.
+*/
+void free_locatn(char *locatn)
+{
+if (locatn != NULL)
+{
+free(locatn);
+}
+}

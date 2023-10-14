@@ -12,7 +12,7 @@ int main(int argc, char **argv, char **envp)
 {
 char **args = NULL;
 char *cmdin = NULL;
-char *cmd_path;
+char *cmd_path = NULL;
 
 signal(SIGINT, signal_handlers);
 if (argc < 1)
@@ -32,14 +32,15 @@ cmd_path = find_cmdpath(args[0]);
 if (cmd_path == NULL)
 {
 not_found_error(args[0]);
+free(cmdin);
 continue;
 }
 cmd_execution(cmd_path, args, envp);
 free(cmd_path);
-}
-}
-free(args);
+free_arguments(args);
 free(cmdin);
+}
+}
 return (0);
 }
 

@@ -36,13 +36,13 @@ if (_strcmp(args[0], "exit") == 0)
 if (args[1] != NULL)
 {
 exit_status = _atoi(args[1]);
-free(args);
+free_arguments(args);
 free(cmdin);
 exit(exit_status);
 }
 else
 {
-free(args);
+free_arguments(args);
 free(cmdin);
 exit(0);
 }

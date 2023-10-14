@@ -72,17 +72,19 @@ char *cmdin = NULL;
 size_t cmdinlen = 0;
 ssize_t lineinput;
 
-lineinput = _getline(&cmdin, &cmdinlen, stdin);
+lineinput = getline(&cmdin, &cmdinlen, stdin);
 if (lineinput == -1)
 {
 if (feof(stdin))
 {
-printf("\n");
+write(1, "\n", 1);
+free(cmdin);
 exit(0);
 }
 else
 {
 perror("getline");
+free(cmdin);
 exit(1);
 }
 }
