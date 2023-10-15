@@ -25,7 +25,7 @@ while (1)
 {
 print_dollarsign();
 cmdin = input_command();
-args = str_tokenizefunc(cmdin, _strlen(cmdin));
+args = str_tokenizefunc(cmdin, _strlen(cmdin) + 1);
 exit_cmd(cmdin, args);
 handle_execute_cmd(cmdin, args, envp);
 free_arguments(args);

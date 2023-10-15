@@ -83,7 +83,7 @@ return (line_len);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 unsigned int i;
-void *new_ptr;
+void *new_ptr = NULL;
 if (ptr == NULL)
 {
 new_ptr = malloc(new_size);

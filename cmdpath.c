@@ -37,8 +37,14 @@ void setenv_func(char **args)
 {
 if (args[1] == NULL || args[2] == NULL)
 {
+ssize_t n;
 char *enverr = "setenv: missing arguments\n";
-write(STDERR_FILENO, enverr, strlen(enverr));
+n = write(STDERR_FILENO, enverr, strlen(enverr));
+if (n < 0)
+{
+perror("write");
+exit(EXIT_FAILURE);
+}
 return;
 }
 if (setenv(args[1], args[2], 1) != 0)
@@ -54,8 +60,14 @@ void unsetenv_func(char **args)
 {
 if (args[1] == NULL)
 {
+ssize_t n;
 char *enverr = "unsetenv: missing arguments\n";
-write(STDERR_FILENO, enverr, strlen(enverr));
+n = write(STDERR_FILENO, enverr, strlen(enverr));
+if (n < 0)
+{
+perror("write");
+exit(EXIT_FAILURE);
+}
 return;
 }
 if (unsetenv(args[1]) != 0)

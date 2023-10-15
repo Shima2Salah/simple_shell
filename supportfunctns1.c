@@ -11,12 +11,18 @@ void cmd_execution(char *cmd_path, char **args, char **envp)
 int status;
 pid_t pid;
 int j = 0;
+ssize_t k, l;
 if (_strcmp(args[0], "env") == 0)
 {
 while (envp[j] != NULL)
 {
-write(STDOUT_FILENO, envp[j], _strlen(envp[j]));
-write(STDOUT_FILENO, "\n", 1);
+k = write(STDOUT_FILENO, envp[j], _strlen(envp[j]));
+l = write(STDOUT_FILENO, "\n", 1);
+if (k < 0 || l < 0)
+{
+perror("write");
+exit(EXIT_FAILURE);
+}
 j++;
 }
 return;
@@ -44,9 +50,15 @@ wait(&status);
  */
 void signal_handlers(int sig)
 {
+ssize_t n;
 (void)sig;
 signal(SIGINT, signal_handlers);
-write(0, "\n$ ", 3);
+n = write(0, "\n$ ", 3);
+if (n < 0)
+{
+perror("write");
+exit(EXIT_FAILURE);
+}
 }
 /**
  * print_dollarsign - func prints $prompt
@@ -71,13 +83,20 @@ char *input_command(void)
 char *cmdin = NULL;
 size_t cmdinlen = 0;
 ssize_t lineinput;
+ssize_t k;
 
 lineinput = getline(&cmdin, &cmdinlen, stdin);
 if (lineinput == -1)
 {
 if (feof(stdin))
 {
-write(1, "\n", 1);
+k = write(1, "\n", 1);
+if (k < 0)
+{
+perror("write");
+free(cmdin);
+exit(EXIT_FAILURE);
+}
 free(cmdin);
 exit(0);
 }

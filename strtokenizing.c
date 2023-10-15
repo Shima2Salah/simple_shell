@@ -47,7 +47,7 @@ return (strings);
 char *string_copyfunc(char *str, ssize_t linelength)
 {
 char *str_cpy = NULL;
-str_cpy = malloc(sizeof(char) * linelength);
+str_cpy = malloc(sizeof(char) * (linelength + 1));
 if (str_cpy == NULL)
 {
 perror("tsh: memory allocation error");
@@ -99,7 +99,7 @@ char **args;
 char *str_cpy = NULL;
 char *str_token;
 int i = 0;
-str_cpy = string_copyfunc(str, linelength);
+str_cpy = string_copyfunc(str, (linelength + 1));
 if (str_cpy == NULL)
 return (NULL);
 str_token = strtok(str, " ");
