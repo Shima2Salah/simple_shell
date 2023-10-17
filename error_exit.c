@@ -43,7 +43,7 @@ exit(EXIT_FAILURE);
 void exit_cmd(char *cmdin, char **args)
 {
 int exit_status;
-if (_strcmp(args[0], "exit") == 0)
+if (strcmp(args[0], "exit") == 0)
 {
 if (args[1] != NULL)
 {

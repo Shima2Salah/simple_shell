@@ -86,7 +86,7 @@ ssize_t lineinput;
 ssize_t k;
 
 lineinput = getline(&cmdin, &cmdinlen, stdin);
-if (lineinput == -1)
+if (isatty(STDIN_FILENO) && lineinput == -1)
 {
 if (feof(stdin))
 {

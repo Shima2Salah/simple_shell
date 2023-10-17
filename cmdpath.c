@@ -5,7 +5,7 @@
  * @args: input arguments
  * @envp: enviromental variables passed
  */
-void handle_execute_cmd(char *cmdin, char **args, char **envp)
+void handle_execute_cmd(char **args, char **envp)
 {
 char *cmd_path = NULL;
 if (strcmp(args[0], "setenv") == 0)
@@ -16,13 +16,16 @@ else if (strcmp(args[0], "unsetenv") == 0)
 {
 unsetenv_func(args);
 }
+else if (strcmp(args[0], "cd") == 0)
+{
+changedir_func(args);
+}
 else
 {
 cmd_path = find_cmdpath(args[0]);
 if (cmd_path == NULL)
 {
 not_found_error(args[0]);
-free(cmdin);
 return;
 }
 cmd_execution(cmd_path, args, envp);

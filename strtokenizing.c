@@ -67,7 +67,7 @@ char **token_fills(char **args, char *str_cpy)
 {
 char *str_token;
 int j, k;
-str_token = strtok(str_cpy, " ");
+str_token = strtok(str_cpy, " \t\n");
 for (j = 0; str_token != NULL; j++)
 {
 args[j] = malloc(sizeof(char) * (_strlen(str_token) + 1));
@@ -82,7 +82,7 @@ free(args);
 return (NULL);
 }
 strcpy(args[j], str_token);
-str_token = strtok(NULL, " ");
+str_token = strtok(NULL, " \t\n");
 }
 return (args);
 }
@@ -99,14 +99,19 @@ char **args;
 char *str_cpy = NULL;
 char *str_token;
 int i = 0;
+if (str)
+{
 str_cpy = string_copyfunc(str, (linelength + 1));
 if (str_cpy == NULL)
+{
+free (str_cpy);
 return (NULL);
-str_token = strtok(str, " ");
+}
+str_token = strtok(str, " \t\n");
 while (str_token != NULL)
 {
 i++;
-str_token = strtok(NULL, " ");
+str_token = strtok(NULL, " \t\n");
 }
 i++;
 args = malloc(sizeof(char *) * i);
@@ -125,4 +130,6 @@ return (NULL);
 args[i - 1] = NULL;
 free(str_cpy);
 return (args);
+}
+return (NULL);
 }

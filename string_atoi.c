@@ -6,6 +6,8 @@
 void free_arguments(char **args)
 {
 int i;
+if (args == NULL)
+return;
 for (i = 0; args[i] != NULL; i++)
 {
 free(args[i]);
@@ -55,9 +57,9 @@ return (sign);
  */
 int _strcmp(char *s1, char *s2)
 {
-int i, j;
+int i, j = 0;
 
-for (i = 0; s1[i] != '\0'; i++)
+for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
 {
 if (s1[i] != s2[i])
 {
@@ -70,5 +72,32 @@ j = 0;
 }
 }
 return (j);
+}
+/**
+ * _strncmp - a function that compare strings
+ * @s1: first pointer
+ * @s2: second pointer
+ * @n: string size
+ *
+ * Return: integer
+ */
+int _strncmp(const char *s1, const char *s2, size_t n)
+{
+size_t k = 0;
+int j;
+while (k < n)
+{
+if (s1[k] != s2[k])
+{
+j = s1[k] - s2[k];
+return (j);
+}
+else if (s1[k] == '\0')
+{
+return (0);
+}
+k++;
+}
+return (0);
 }
 

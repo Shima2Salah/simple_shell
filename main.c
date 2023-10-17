@@ -23,11 +23,17 @@ if (argc == 1)
 {
 while (1)
 {
+if (isatty(STDIN_FILENO))
 print_dollarsign();
 cmdin = input_command();
 args = str_tokenizefunc(cmdin, _strlen(cmdin) + 1);
+if (args == NULL)
+{
+free (cmdin);
+continue;
+}
 exit_cmd(cmdin, args);
-handle_execute_cmd(cmdin, args, envp);
+handle_execute_cmd(args, envp);
 free_arguments(args);
 free(cmdin);
 }
