@@ -37,7 +37,7 @@ o = write(STDERR_FILENO, ": not found\n", 12);
 if (j < 0 || k < 0 || l < 0 || m < 0 || n < 0 || o < 0)
 {
 perror("write");
-exit(EXIT_FAILURE);
+exit(127);
 }
 }
 /**
