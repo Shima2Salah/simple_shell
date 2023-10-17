@@ -1,4 +1,9 @@
 #include "shell.h"
+/**
+*executeDemand-function to execute the processes
+*demand:command input
+*Return:Nothing
+*/
 void executeDemand(const char* demand)
 {
     //using fork() to create child processes

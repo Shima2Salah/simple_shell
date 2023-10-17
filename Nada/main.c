@@ -3,6 +3,7 @@ int main(void)
 {
 char demand[100];
 char length[130];
+
 while (1)
 {
 displayPrompt();
