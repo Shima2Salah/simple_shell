@@ -26,6 +26,8 @@ while (1)
 if (isatty(STDIN_FILENO))
 print_dollarsign();
 cmdin = input_command();
+if (line_remover(cmdin))
+continue;
 args = str_tokenizefunc(cmdin, _strlen(cmdin) + 1);
 if (args == NULL)
 {

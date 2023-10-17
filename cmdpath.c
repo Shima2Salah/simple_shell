@@ -25,7 +25,7 @@ else
 cmd_path = find_cmdpath(args[0]);
 if (cmd_path == NULL)
 {
-not_found_error(args[0]);
+perror(args[0]);
 return;
 }
 cmd_execution(cmd_path, args, envp);
