@@ -12,6 +12,7 @@ int main(int argc, char **argv, char **envp)
 {
 char **args = NULL;
 char *cmdin = NULL;
+int i = 0;
 
 signal(SIGINT, signal_handlers);
 if (argc < 1)
@@ -31,15 +32,16 @@ continue;
 args = str_tokenizefunc(cmdin, _strlen(cmdin) + 1);
 if (args == NULL)
 {
-free (cmdin);
+free(cmdin);
 continue;
 }
 exit_cmd(cmdin, args);
-handle_execute_cmd(args, envp);
+handle_execute_cmd(argv[0], args, envp, ++i);
 free_arguments(args);
 free(cmdin);
 }
 }
 return (0);
 }
+
 

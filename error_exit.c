@@ -18,18 +18,23 @@ exit(EXIT_FAILURE);
 }
 }
 /**
- * not_found_error - handle error usage
+ * not_found_error - handle error not_found
+ * @program: program entered
  * @str: command entered
- *
+ * @i: command count
  */
-void not_found_error(char *str)
+void not_found_error(char *program, char *str, int i)
 {
-ssize_t k, l, m;
-perror(str);
+ssize_t j, k, l, m, n, o;
+char str_i[12];
+_itoa(i, str_i, 10);
+j = write(STDERR_FILENO, program, _strlen(program));
 k = write(STDERR_FILENO, ": ", 2);
-l = write(STDERR_FILENO, str, _strlen(str));
-m = write(STDERR_FILENO, ": command not found\n", 20);
-if (k < 0 || l < 0 || m < 0)
+l = write(STDERR_FILENO, str_i, strlen(str_i));
+m = write(STDERR_FILENO, ": ", 2);
+n = write(STDERR_FILENO, str, _strlen(str));
+o = write(STDERR_FILENO, ": not found\n", 12);
+if (j < 0 || k < 0 || l < 0 || m < 0 || n < 0 || o < 0)
 {
 perror("write");
 exit(EXIT_FAILURE);

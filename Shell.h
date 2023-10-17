@@ -24,7 +24,8 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 int file_handling(char *path_file);
 void usage_error(char *str);
-void not_found_error(char *str);
+void not_found_error(char *program, char *str, int i);
+char *_itoa(int num, char *str, int base);
 char **str_tokenizefunc(char *str, ssize_t linelength);
 char *string_copyfunc(char *str, ssize_t linelength);
 char **token_fills(char **args, char *str_cpy);
@@ -36,7 +37,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_strtok(char *str, char *delim);
 int _atoi(char *s);
 void free_arguments(char **args);
-void handle_execute_cmd(char **args, char **envp);
+void handle_execute_cmd(char *program, char **args, char **envp, int i);
 void setenv_func(char **args);
 void unsetenv_func(char **args);
 void changedir_func(char **args);
@@ -46,5 +47,6 @@ int add_env_var(const char *str, const char *new_env);
 void cd_complmentry_func(char **args);
 int line_remover(char *cmdin);
 #endif
+
 
 

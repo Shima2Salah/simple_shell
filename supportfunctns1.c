@@ -86,9 +86,11 @@ ssize_t lineinput;
 ssize_t k;
 
 lineinput = getline(&cmdin, &cmdinlen, stdin);
-if (isatty(STDIN_FILENO) && lineinput == -1)
+if (lineinput == -1)
 {
 if (feof(stdin))
+{
+if (isatty(STDIN_FILENO))
 {
 k = write(1, "\n", 1);
 if (k < 0)
@@ -96,6 +98,7 @@ if (k < 0)
 perror("write");
 free(cmdin);
 exit(EXIT_FAILURE);
+}
 }
 free(cmdin);
 exit(0);

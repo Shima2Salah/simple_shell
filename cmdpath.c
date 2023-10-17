@@ -1,11 +1,12 @@
 #include "Shell.h"
 /**
  * handle_execute_cmd - to handle env & path
- * @cmdin: command entered
+ * @program: program entered
  * @args: input arguments
  * @envp: enviromental variables passed
+ * @i: count loops
  */
-void handle_execute_cmd(char **args, char **envp)
+void handle_execute_cmd(char *program, char **args, char **envp, int i)
 {
 char *cmd_path = NULL;
 if (strcmp(args[0], "setenv") == 0)
@@ -25,7 +26,7 @@ else
 cmd_path = find_cmdpath(args[0]);
 if (cmd_path == NULL)
 {
-perror(args[0]);
+not_found_error(program, args[0], i);
 return;
 }
 cmd_execution(cmd_path, args, envp);

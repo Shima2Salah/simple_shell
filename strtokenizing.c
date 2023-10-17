@@ -104,7 +104,7 @@ if (str)
 str_cpy = string_copyfunc(str, (linelength + 1));
 if (str_cpy == NULL)
 {
-free (str_cpy);
+free(str_cpy);
 return (NULL);
 }
 str_token = strtok(str, " \t\n");

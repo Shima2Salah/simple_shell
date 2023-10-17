@@ -1,43 +1,49 @@
 #include "Shell.h"
 /**
- * line_remover - func remove lines
- * @cmdin: entered command
- * Return: integer
- */
-int line_remover(char *cmdin)
+* _itoa - Converts an integer to a string.
+* @num: integer to be converted.
+* @str: string saved in.
+* @base: integer base.
+* Return: integer value.
+*/
+char *_itoa(int num, char *str, int base)
 {
-int i, j = 0, k = 0;
-while (cmdin[j])
+int i = 0, neg = 0, j = 0, k, result;
+char temp;
+if (num == 0)
 {
-if (cmdin[j] == ' ' || cmdin[j] == '\n')
-k++;
+str[i] = '0';
+str[++i] = '\0';
+return (str);
+}
+if (num < 0 && base == 10)
+{
+neg = 1;
+num = num * (-1);
+}
+while (num != 0)
+{
+result = num % base;
+if (result > 9)
+str[i] = (result - 10) + 'a';
 else
-break;
+str[i] = result + '0';
+i++;
+num = num / base;
+}
+if (neg)
+str[i++] = '-';
+str[i] = '\0';
+k = i - 1;
+while (j < k)
+{
+temp = str[j];
+str[j] = str[k];
+str[k] = temp;
+k--;
 j++;
 }
-i =_strcmp((cmdin + k), "\n");
-if (!cmdin[k] || !i)
-{
-free(cmdin);
-return (1);
-}
-_strcpy(cmdin, cmdin + k);
-return (0);
-}
-/**
-* free_arguments - func to free all args.
-* @args: token arguments.
-*/
-void free_arguments(char **args)
-{
-int i;
-if (args == NULL)
-return;
-for (i = 0; args[i] != NULL; i++)
-{
-free(args[i]);
-}
-free(args);
+return (str);
 }
 /**
 * _atoi - Converts a string to an integer.
