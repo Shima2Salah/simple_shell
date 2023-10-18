@@ -84,4 +84,32 @@
  * @args: input arguments
  * @ret_val: return_value
  */
-
+# size_t inc_lineptr(char **lineptr, size_t *n, size_t line_len, char *buff, size_t begining, size_t end)
+/**
+ * inc_lineptr - func to increase line length
+ * @lineptr: pointer to line
+ * @n: integer length
+ * @line_len: line length
+ * @buff: current buffer
+ * @begining: start size
+ * @end: last size
+ * Return: current line length
+ */
+# ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
+/**
+ * _getline - func simulate getline function
+ * @lineptr: pointer to line
+ * @n: integer length
+ * @stream: file stream
+ * Return: current line length
+ */
+# void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+/**
+ * _realloc - realloc a memory address
+ * @ptr: current address
+ * @old_size: old size of the address
+ * @new_size: new size of the address
+ *
+ * Return: pointer to the new address
+ */
+# 
