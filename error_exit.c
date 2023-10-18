@@ -47,11 +47,29 @@ exit(127);
  */
 void exit_cmd(char *cmdin, char **args)
 {
-int exit_status;
+int exit_status, i, n = 1;
 if (strcmp(args[0], "exit") == 0)
 {
 if (args[1] != NULL)
 {
+for (i = 0; args[1][i] != '\0'; i++)
+{
+if (args[1][i] < '0' || args[1][i] > '9')
+{
+n = 0;
+break;
+}
+}
+if (!n)
+{
+write(STDERR_FILENO, "hsh: 1: exit: Illegal number:\n", 30);
+free_arguments(args);
+free(cmdin);
+if (!isatty(STDIN_FILENO))
+exit(2);
+else
+return;
+}
 exit_status = atoi(args[1]);
 free_arguments(args);
 free(cmdin);
