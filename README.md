@@ -1,5 +1,7 @@
 # OUR 0x16. C - Simple Shell
 Created By Shimaa Salah and Nada Khaled
+Project will start Oct 4, 2023 6:00 AM, must end by Oct 19, 2023 6:00 AM
+
 # void changedir_func(char **args)
 /**
  * changedir_func - to handle change directories
