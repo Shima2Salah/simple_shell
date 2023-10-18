@@ -7,6 +7,10 @@ Basics of C
 Basics of thinking like an engineer
 Group work
 and Learning how to learn
+# Resources
+Unix shell
+Thompson shell
+Ken Thompson
 # void changedir_func(char **args)
 /**
  * changedir_func - to handle change directories
