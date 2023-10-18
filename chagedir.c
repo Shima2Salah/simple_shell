@@ -30,7 +30,7 @@ setenv("PWD", currentdir, 1);
 void cd_complmentry_func(char **args)
 {
 char *home, *old_pwd;
-int k = 0, l = 0, m = 0;
+int k = 0;
 if (args[1] == NULL || strcmp(args[1], "~") == 0)
 {
 home = getenv("HOME");
@@ -39,7 +39,7 @@ if (home == NULL)
 write(STDERR_FILENO, "tsh: HOME environment variable not set\n", 39);
 exit(EXIT_FAILURE);
 }
-l = chdir(home);
+k = chdir(home);
 }
 else if (strcmp(args[1], "-") == 0)
 {
@@ -53,9 +53,9 @@ k = chdir(old_pwd);
 }
 else
 {
-m = chdir(args[1]);
+k = chdir(args[1]);
 }
-if (k == -1 || l == -1 || m == -1)
+if (k == -1)
 {
 perror("chdir");
 exit(EXIT_FAILURE);
