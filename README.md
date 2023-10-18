@@ -252,4 +252,15 @@
  * @path_file: entered file path
  * Return: integer
  */
+# int line_remover(char *cmdin)
+/**
+ * line_remover - func remove lines
+ * @cmdin: entered command
+ * Return: integer
+ */
+# void free_arguments(char **args)
+/**
+* free_arguments - func to free all args.
+* @args: token arguments.
+*/
 # 
