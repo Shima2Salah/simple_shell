@@ -10,7 +10,7 @@ char *cd_result;
 cd_result = getcwd(currentdir, sizeof(currentdir));
 if (cd_result == NULL)
 {
-perror("cwd");
+perror("getcwd");
 exit(EXIT_FAILURE);
 }
 setenv("OLDPWD", currentdir, 1);
@@ -18,7 +18,7 @@ cd_complmentry_func(args);
 cd_result = getcwd(currentdir, sizeof(currentdir));
 if (cd_result == NULL)
 {
-perror("cwd");
+perror("getcwd");
 exit(EXIT_FAILURE);
 }
 setenv("PWD", currentdir, 1);
