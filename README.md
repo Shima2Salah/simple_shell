@@ -152,4 +152,42 @@
  *
  * Return: integer
  */
+# int _strlen(char *s)
+/**
+ * _strlen - functn measure array length
+ * @s: my input
+ * Description: function calculate arr length
+ * Return: length
+ */
+# char *_strcat(char *dest, char *src)
+/**
+ * _strcat - a function that concatenates
+ * @dest: first pointer
+ * @src: second pointer
+ *
+ * Return: pointer
+ */
+# char *_strcpy(char *dest, char *src)
+/**
+ * _strcpy - functn reverse array
+ * @dest: my first input
+ * @src: second input
+ * Description: function reverse array
+ * Return: copy of str
+ */
+# char *_strdup(char *str)
+/**
+ * _strdup - fundtn creates a new array
+ * @str: pointer input
+ *
+ * Return: pointer of char
+ */
+# char *_strchr(char *s, char c)
+/**
+ * _strchr - a function that locates a character in a string
+ * @s: first pointer
+ * @c: character
+ *
+ * Return: pointer
+ */
 
