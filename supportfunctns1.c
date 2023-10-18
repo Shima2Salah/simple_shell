@@ -27,6 +27,8 @@ j++;
 }
 return;
 }
+if (cmd_path == NULL)
+return;
 pid = fork();
 if (pid < 0)
 {
