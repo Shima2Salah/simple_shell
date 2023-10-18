@@ -37,7 +37,7 @@ else if (pid == 0)
 {
 execve(cmd_path, args, envp);
 perror("execve");
-exit(1);
+exit(127);
 }
 else
 {
