@@ -35,7 +35,7 @@ if (args == NULL)
 free(cmdin);
 continue;
 }
-exit_cmd(cmdin, args);
+exit_cmd(cmdin, args, ret_val);
 ret_val = handle_execute_cmd(argv[0], args, envp, ++i, ret_val);
 free_arguments(args);
 free(cmdin);

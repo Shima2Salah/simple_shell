@@ -44,10 +44,11 @@ exit(127);
  * exit_cmd - to exit command
  * @cmdin: command entered
  * @args: input arguments
+ * @ret_val: return_value
  */
-void exit_cmd(char *cmdin, char **args)
+void exit_cmd(char *cmdin, char **args, int ret_val)
 {
-int exit_status, i, n = 1;
+int i, n = 1;
 if (strcmp(args[0], "exit") == 0)
 {
 if (args[1] != NULL)
@@ -70,16 +71,17 @@ exit(2);
 else
 return;
 }
-exit_status = atoi(args[1]);
+ret_val = atoi(args[1]);
 free_arguments(args);
 free(cmdin);
-exit(exit_status);
+exit(ret_val);
 }
 else
 {
 free_arguments(args);
 free(cmdin);
-exit(0);
+exit(ret_val);
 }
 }
 }
+

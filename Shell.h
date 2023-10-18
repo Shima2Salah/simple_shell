@@ -13,7 +13,7 @@ extern char **environ;
 void signal_handlers(int sig);
 void print_dollarsign(void);
 char *input_command(int ret_val);
-void exit_cmd(char *cmdin, char **args);
+void exit_cmd(char *cmdin, char **args, int ret_val);
 char *find_cmdpath(char *input_cmd);
 char *_strchr(char *s, char c);
 char *_strdup(char *str);
