@@ -64,4 +64,24 @@
  *
  * Return: charecter path
  */
+# void usage_error(char *str)
+/**
+ * usage_error - handle error usage
+ * @str: command entered
+ *
+ */
+# void not_found_error(char *program, char *str, int i)
+/**
+ * not_found_error - handle error not_found
+ * @program: program entered
+ * @str: command entered
+ * @i: command count
+ */
+# void exit_cmd(char *cmdin, char **args, int ret_val)
+/**
+ * exit_cmd - to exit command
+ * @cmdin: command entered
+ * @args: input arguments
+ * @ret_val: return_value
+ */
 
