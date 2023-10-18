@@ -190,4 +190,36 @@
  *
  * Return: pointer
  */
-
+# char *_strtok(char *str, char *delim)
+/**
+ * _strtok - func simulate str tokenizing
+ * @str: command entered
+ * @delim: that separate arguments
+ *
+ * Return: tokens arguments
+ */
+# char *string_copyfunc(char *str, ssize_t linelength)
+/**
+ * string_copyfunc - func copy str before tokenizing
+ * @str: command entered
+ * @linelength: int line length
+ *
+ * Return: copy of string
+ */
+# char **token_fills(char **args, char *str_cpy)
+/**
+ * token_fills - func fills token arguments
+ * @args: command arguments
+ * @str_cpy: char copy of string
+ *
+ * Return: token arguments
+ */
+# char **str_tokenizefunc(char *str, ssize_t linelength)
+/**
+ * str_tokenizefunc - func that support str tokens
+ * @str: command entered
+ * @linelength: int line length
+ *
+ * Return: token arguments
+ */
+# 
