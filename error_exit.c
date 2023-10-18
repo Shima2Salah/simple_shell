@@ -63,7 +63,7 @@ break;
 }
 if (!n)
 {
-write(STDERR_FILENO, "hsh: 1: exit: Illegal number:\n", 30);
+write(STDERR_FILENO, "./hsh: 1: exit: Illegal number:\n", 32);
 write(STDERR_FILENO, args[1], strlen(args[1]));
 write(STDERR_FILENO, "\n", 1);
 free_arguments(args);
