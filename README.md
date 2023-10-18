@@ -112,4 +112,13 @@
  *
  * Return: pointer to the new address
  */
+# int main(int argc, char **argv, char **envp)
+/**
+ * main - my entery point
+ * @argc: arguments count
+ * @argv: enter arguments
+ * @envp: enviromental variables passed
+ * Description: function simulate simple shell
+ * Return: 0 success
+ */
 # 
