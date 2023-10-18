@@ -37,7 +37,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_strtok(char *str, char *delim);
 int _atoi(char *s);
 void free_arguments(char **args);
-void handle_execute_cmd(char *program, char **args, char **envp, int i);
+int handle_execute_cmd(char *program, char **args, char **envp, int i);
 void setenv_func(char **args);
 void unsetenv_func(char **args);
 void changedir_func(char **args);

@@ -12,7 +12,7 @@ int main(int argc, char **argv, char **envp)
 {
 char **args = NULL;
 char *cmdin = NULL;
-int i = 0;
+int i = 0, ret_val = 0;
 
 signal(SIGINT, signal_handlers);
 if (argc < 1)
@@ -36,12 +36,12 @@ free(cmdin);
 continue;
 }
 exit_cmd(cmdin, args);
-handle_execute_cmd(argv[0], args, envp, ++i);
+ret_val = handle_execute_cmd(argv[0], args, envp, ++i);
 free_arguments(args);
 free(cmdin);
 }
 }
-return (0);
+return (ret_val);
 }
 
 
