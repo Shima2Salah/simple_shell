@@ -222,4 +222,34 @@
  *
  * Return: token arguments
  */
+# int cmd_execution(char *cmd_path, char **args, char **envp)
+/**
+ * cmd_execution - func excute command entered
+ * @cmd_path: char command path
+ * @args: tokenized arguments
+ * @envp: enviromental variables passed
+ * Return: integer value
+ */
+# void signal_handlers(int sig)
+/**
+ * signal_handlers - func handle signals
+ * @sig: integer signal
+ */
+# void print_dollarsign(void)
+/**
+ * print_dollarsign - func prints $prompt
+ *
+ */
+# char *input_command(int ret_val)
+/**
+ * input_command - func recieve user input
+ * @ret_val: return value
+ * Return: command entered
+ */
+# int file_handling(char *path_file)
+/**
+ * file_handling - func handles files
+ * @path_file: entered file path
+ * Return: integer
+ */
 # 
