@@ -121,4 +121,35 @@
  * Description: function simulate simple shell
  * Return: 0 success
  */
-# 
+# char *_itoa(int num, char *str, int base)
+/**
+* _itoa - Converts an integer to a string.
+* @num: integer to be converted.
+* @str: string saved in.
+* @base: integer base.
+* Return: integer value.
+*/
+# int _atoi(char *s)
+/**
+* _atoi - Converts a string to an integer.
+* @s: string to be converted.
+* Return: integer value.
+*/
+# int _strcmp(char *s1, char *s2)
+/**
+ * _strcmp - a function that compare
+ * @s1: first pointer
+ * @s2: second pointer
+ *
+ * Return: integer
+ */
+# int _strncmp(const char *s1, const char *s2, size_t n)
+/**
+ * _strncmp - a function that compare strings
+ * @s1: first pointer
+ * @s2: second pointer
+ * @n: string size
+ *
+ * Return: integer
+ */
+
