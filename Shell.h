@@ -12,7 +12,7 @@
 extern char **environ;
 void signal_handlers(int sig);
 void print_dollarsign(void);
-char *input_command(void);
+char *input_command(int ret_val);
 void exit_cmd(char *cmdin, char **args);
 char *find_cmdpath(char *input_cmd);
 char *_strchr(char *s, char c);
@@ -29,7 +29,7 @@ char *_itoa(int num, char *str, int base);
 char **str_tokenizefunc(char *str, ssize_t linelength);
 char *string_copyfunc(char *str, ssize_t linelength);
 char **token_fills(char **args, char *str_cpy);
-void cmd_execution(char *cmd_path, char **args, char **envp);
+int cmd_execution(char *cmd_path, char **args, char **envp);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 size_t inc_lineptr(char **lineptr, size_t *n, size_t line_len,
 		char *buff, size_t start, size_t end);
@@ -37,7 +37,8 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_strtok(char *str, char *delim);
 int _atoi(char *s);
 void free_arguments(char **args);
-int handle_execute_cmd(char *program, char **args, char **envp, int i);
+int handle_execute_cmd(char *program, char **args, char **envp,
+		int i, int ret_val);
 void setenv_func(char **args);
 void unsetenv_func(char **args);
 void changedir_func(char **args);

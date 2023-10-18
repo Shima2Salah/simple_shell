@@ -5,9 +5,11 @@
  * @args: input arguments
  * @envp: enviromental variables passed
  * @i: count loops
+ * @ret_val: return_value
  * Return: integer
  */
-int handle_execute_cmd(char *program, char **args, char **envp, int i)
+int handle_execute_cmd(char *program, char **args, char **envp,
+		int i, int ret_val)
 {
 char *cmd_path = NULL;
 if (strcmp(args[0], "setenv") == 0)
@@ -26,10 +28,10 @@ if (cmd_path == NULL)
 not_found_error(program, args[0], i);
 return (127);
 }
-cmd_execution(cmd_path, args, envp);
+ret_val = cmd_execution(cmd_path, args, envp);
 free(cmd_path);
 }
-return (0);
+return (ret_val);
 }
 /**
  * checkenv_func - to handle set eviroment vars

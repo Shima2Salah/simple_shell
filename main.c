@@ -26,7 +26,7 @@ while (1)
 {
 if (isatty(STDIN_FILENO))
 print_dollarsign();
-cmdin = input_command();
+cmdin = input_command(ret_val);
 if (line_remover(cmdin))
 continue;
 args = str_tokenizefunc(cmdin, _strlen(cmdin) + 1);
@@ -36,7 +36,7 @@ free(cmdin);
 continue;
 }
 exit_cmd(cmdin, args);
-ret_val = handle_execute_cmd(argv[0], args, envp, ++i);
+ret_val = handle_execute_cmd(argv[0], args, envp, ++i, ret_val);
 free_arguments(args);
 free(cmdin);
 }

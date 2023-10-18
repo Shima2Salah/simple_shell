@@ -5,13 +5,14 @@
  * @cmd_path: char command path
  * @args: tokenized arguments
  * @envp: enviromental variables passed
+ * Return: integer value
  */
-void cmd_execution(char *cmd_path, char **args, char **envp)
+int cmd_execution(char *cmd_path, char **args, char **envp)
 {
 int status;
 pid_t pid;
 if (cmd_path == NULL)
-return;
+return (127);
 pid = fork();
 if (pid < 0)
 {
@@ -27,7 +28,10 @@ exit(127);
 else
 {
 wait(&status);
+if (WIFEXITED(status))
+return (WEXITSTATUS(status));
 }
+return (0);
 }
 /**
  * signal_handlers - func handle signals
@@ -61,9 +65,10 @@ exit(-1);
 }
 /**
  * input_command - func recieve user input
+ * @ret_val: return value
  * Return: command entered
  */
-char *input_command(void)
+char *input_command(int ret_val)
 {
 char *cmdin = NULL;
 size_t cmdinlen = 0;
@@ -86,7 +91,7 @@ exit(EXIT_FAILURE);
 }
 }
 free(cmdin);
-exit(0);
+exit(ret_val);
 }
 else
 {
