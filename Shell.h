@@ -46,6 +46,7 @@ int _setenv(const char *str, const char *new_env, int n);
 int add_env_var(const char *str, const char *new_env);
 void cd_complmentry_func(char **args);
 int line_remover(char *cmdin);
+void checkenv_func(char **envp);
 #endif
 
 

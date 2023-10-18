@@ -10,23 +10,6 @@ void cmd_execution(char *cmd_path, char **args, char **envp)
 {
 int status;
 pid_t pid;
-int j = 0;
-ssize_t k, l;
-if (_strcmp(args[0], "env") == 0)
-{
-while (envp[j] != NULL)
-{
-k = write(STDOUT_FILENO, envp[j], _strlen(envp[j]));
-l = write(STDOUT_FILENO, "\n", 1);
-if (k < 0 || l < 0)
-{
-perror("write");
-exit(EXIT_FAILURE);
-}
-j++;
-}
-return;
-}
 if (cmd_path == NULL)
 return;
 pid = fork();

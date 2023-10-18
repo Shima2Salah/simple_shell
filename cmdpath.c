@@ -11,17 +11,13 @@ int handle_execute_cmd(char *program, char **args, char **envp, int i)
 {
 char *cmd_path = NULL;
 if (strcmp(args[0], "setenv") == 0)
-{
 setenv_func(args);
-}
 else if (strcmp(args[0], "unsetenv") == 0)
-{
 unsetenv_func(args);
-}
 else if (strcmp(args[0], "cd") == 0)
-{
 changedir_func(args);
-}
+else if (strcmp(args[0], "env") == 0)
+checkenv_func(envp);
 else
 {
 cmd_path = find_cmdpath(args[0]);
@@ -34,6 +30,26 @@ cmd_execution(cmd_path, args, envp);
 free(cmd_path);
 }
 return (0);
+}
+/**
+ * checkenv_func - to handle set eviroment vars
+ * @envp: enviromental variables passed
+ */
+void checkenv_func(char **envp)
+{
+int j = 0;
+ssize_t k, l;
+while (envp[j] != NULL)
+{
+k = write(STDOUT_FILENO, envp[j], _strlen(envp[j]));
+l = write(STDOUT_FILENO, "\n", 1);
+if (k < 0 || l < 0)
+{
+perror("write");
+exit(EXIT_FAILURE);
+}
+j++;
+}
 }
 /**
  * setenv_func - to handle set eviroment vars
